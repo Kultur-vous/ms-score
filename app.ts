@@ -27,6 +27,8 @@ app.post("/addScore", auth, async (req: any, res: any) => {
 
 app.get('/scores', async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
+  
+  res.status(200).send({message: "salut"})
   if(!req.headers.id) {
     res.status(400).send({error: "Il manque un paramètre dans le headers"})
   }
@@ -35,7 +37,7 @@ app.get('/scores', async (req: any, res: any) => {
   if(getScore.error) {
     res.status(400).send(getScore)
   }
-  res.status(200).send(getScore)
+  //res.status(200).send(getScore)
 })
 
 app.listen(process.env.PORT || 3002, () => {
