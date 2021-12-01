@@ -15,8 +15,7 @@ app.use(express.json());
 
 app.get("/", async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
-  const getScore = await scoreService.getScore("61a6a36e5254f69dda067d18")
-  res.status(200).send(getScore);
+  res.status(200).send({ mesage: "Page d'accueil" });
 });
 
 app.post("/addScore", auth, async (req: any, res: any) => {
@@ -29,7 +28,6 @@ app.post("/addScore", auth, async (req: any, res: any) => {
 app.get('/scores', async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
   
-  res.status(200).send({message: "salut"})
   if(!req.headers.id) {
     res.status(400).send({error: "Il manque un paramètre dans le headers"})
   }
