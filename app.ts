@@ -10,7 +10,7 @@ const _mongoConnection = mongoConnection;
 const scoreService = new ScoreService();
 require("dotenv").config();
 
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 app.use(express.json());
 
 app.get("/", (req: any, res: any) => {
