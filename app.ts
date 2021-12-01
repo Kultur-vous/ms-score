@@ -36,7 +36,7 @@ app.get('/scores', async (req: any, res: any) => {
   if(getScore.error) {
     res.status(400).send(getScore)
   }
-  //res.status(200).send(getScore)
+  res.status(200).send(getScore)
 })
 
 app.listen(process.env.PORT || 3002, () => {
