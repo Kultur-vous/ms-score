@@ -13,6 +13,11 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 app.use(express.json());
 
+app.get("/", (req: any, res: any) => {
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).send({ mesage: "Page d'accueil" });
+});
+
 app.post("/addScore", auth, async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
   if(!req.headers.id) {res.status(400).send({error: "Il manque un paramètre dans le headers"})}
@@ -26,7 +31,7 @@ app.get('/scores', auth, async (req: any, res: any) => {
     res.status(400).send({error: "Il manque un paramètre dans le headers"})
   }
   const getScore = await scoreService.getScore(req.headers.id)
-  
+
   if(getScore.error) {
     res.status(400).send(getScore)
   }
