@@ -25,7 +25,7 @@ app.post("/addScore", auth, async (req: any, res: any) => {
   res.status(200).send(createScore)
 });
 
-app.get('/scores', auth, async (req: any, res: any) => {
+app.get('/scores', async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
   if(!req.headers.id) {
     res.status(400).send({error: "Il manque un paramètre dans le headers"})
