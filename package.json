@@ -10,7 +10,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "dev": "nodemon app.ts",
+    "dev": "nodemon app.ts"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
