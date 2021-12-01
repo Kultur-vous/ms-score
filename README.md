@@ -45,7 +45,7 @@ Body :
     value: "",
     nbQuestion: "",
     category: "",
-    difficulty: ""
+    level: ""
 }
 ```
 
