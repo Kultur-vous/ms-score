@@ -13,20 +13,25 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 app.use(express.json());
 
-const score = {
-  value: 6,
-  nbQuestion: 20,
-  createdAt: new Date(),
-  difficulty: "Facile",
-  theme: "Divers",
-};
-
-app.get("/", auth, async (req: any, res: any) => {
+app.post("/addScore", auth, async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
-  const createScore = await scoreService.addScore(score, req.headers.id);
+  if(!req.headers.id) {res.status(400).send({error: "Il manque un paramètre dans le headers"})}
+  const createScore = await scoreService.addScore(req.body, req.headers.id);
   res.status(200).send(createScore)
-  //console.log(createScore);
 });
+
+app.get('/scores', auth, async (req: any, res: any) => {
+  res.setHeader("Content-Type", "application/json");
+  if(!req.headers.id) {
+    res.status(400).send({error: "Il manque un paramètre dans le headers"})
+  }
+  const getScore = await scoreService.getScore(req.headers.id)
+  
+  if(getScore.error) {
+    res.status(400).send(getScore)
+  }
+  res.status(200).send(getScore)
+})
 
 app.listen(process.env.PORT || 3002, () => {
   console.log("Server app listening on port 3002");

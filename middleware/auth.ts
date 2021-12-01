@@ -2,14 +2,18 @@
 const jwt = require("jsonwebtoken");
 
 export default function auth(req: any, res: any, next: any) {
+  
   const token = req.headers.authorization.split(" ")[1];
   try {
     const decryptToken = jwt.verify(token, "shhhhh");
+    if(!req.headers.email){
+      res.status(400).send({error:"Il manque un paramètre dans le headers"})
+    }
     
     if (decryptToken.email === req.headers.email) {
       next();
     } else {
-      console.log("sqd");
+      res.status(400).send({error:"Le token n'est pas valide"})
     }
   } catch (e) {
     return e;

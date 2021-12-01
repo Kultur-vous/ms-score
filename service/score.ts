@@ -8,4 +8,8 @@ export class ScoreService {
     async addScore(score: DataScore, id: String) {
         return this.scoreDAO.addScore(score, id)
     }
+
+    async getScore(id: String) {
+        return this.scoreDAO.getScore(id)
+    }
 }
