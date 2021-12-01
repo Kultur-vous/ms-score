@@ -13,9 +13,10 @@ require("dotenv").config();
 //const bodyParser = require("body-parser");
 app.use(express.json());
 
-app.get("/", (req: any, res: any) => {
+app.get("/", async (req: any, res: any) => {
   res.setHeader("Content-Type", "application/json");
-  res.status(200).send({ mesage: "Page d'accueil" });
+  const getScore = await scoreService.getScore("61a6a36e5254f69dda067d18")
+  res.status(200).send(getScore);
 });
 
 app.post("/addScore", auth, async (req: any, res: any) => {
