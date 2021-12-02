@@ -33,7 +33,6 @@ MONGO_DB=scores
 
 ## Endpoints
 
-
 ### Add Score
 
 `POST /addScore`
@@ -49,39 +48,26 @@ Body :
 }
 ```
 
-Header :
+Headers :
 
 ```
 {
     email: "",
-    id: ""
-}
-```
-
-Authorization :
-
-```
-{
-    authorized: Bearer *token*,
+    id: "",
+    Authorization : Bearer *token*
 }
 ```
 
 ### Scores
 
-`GET /scores` 
+`GET /scores`
 
 Header :
 
 ```
 {
     email: "",
-    id: ""
+    id: "",
+    Authorization : Bearer *token*
 }
 ```
-
-Authorization :
-
-```
-{
-    authorized: Bearer *token*,
-}
